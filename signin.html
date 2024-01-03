@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Sigin Form</title>
+</head>
+<body style="background-color: grey;">
+
+<div class="container" style= "margin-top: 5%" >
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header text-center font-weight-bold">
+                    <h3>Register</h3>
+                </div>
+                <div class="card-body">
+                    <form action="#">
+                        <div class="form-group">
+                            
+                            <input type="text" class="form-control" id="username" placeholder="Enter your username" style="border: 1px solid #eaeaea">
+                            <span id="usernameerror" style="color: red;"></span>
+                        </div>
+                        <div class="form-group">
+                            
+                            <input type="text" class="form-control" id="phone" placeholder="Enter your phone number" style="border: 1px solid #eaeaea">
+                            <span id="phoneerror" style="color: red;"></span>
+                        </div>
+                        <div class="form-group">
+                            
+                            <input type="password" class="form-control" id="createpass" placeholder="Enter your password" style="border: 1px solid #eaeaea">
+                            <span id="createpasserror" style="color: red;"></span>
+                        </div>
+                        <div class="form-group">
+                            
+                            <input type="password" class="form-control" id="conformpass" placeholder="Enter confirm password" style="border: 1px solid #eaeaea">
+                            <span id="conformpasserror" style="color: red;"></span>
+                        </div>
+                        <button type="button" class="btn btn-primary btn-lg btn-block" data-bs-toggle="modal" onclick="checkformsignin()">Sign up</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="salert" tabindex="-1" role="dialog" aria-labelledby="saleartLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-success">
+            <div class="modal-header">
+                <h5 class="modal-title" id="saleartLabel">Congratulation..!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>You are successfully Signin this page.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary "  data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<script>
+    function checkformsignin() {
+
+    document.getElementById('usernameerror').innerText = '';
+    document.getElementById('phoneerror').innerText = '';
+    document.getElementById('createpasserror').innerText = '';
+    document.getElementById('conformpasserror').innerText = '';
+
+    var username = document.getElementById('username').value.trim();
+    var phone = document.getElementById('phone').value.trim();
+    var createpass = document.getElementById('createpass').value.trim();
+    var conformpass = document.getElementById('conformpass').value.trim();
+
+    if (username === '') {
+        document.getElementById('usernameerror').innerText = 'Username is required';
+        return;
+    }
+
+    if (phone < 10) {
+        document.getElementById('phoneerror').innerText = 'Phone number is must be atlest 10 character';
+        return;
+    }
+
+    if (createpass < 8) {
+        document.getElementById('createpasserror').innerText = 'Password is must be atleast 8 character';
+        return;
+    }
+
+    if (createpass !== conformpass) {
+        document.getElementById('conformpasserror').innerText = 'Passwords do not match';
+        return;
+    }
+
+    $('#salert').modal('show');
+}
+
+</script>
+
+
+
+</body>
+</html>
